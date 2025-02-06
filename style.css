@@ -3,11 +3,10 @@
   --grey: rgb(56, 60, 74);
   --text: rgb(124, 129, 140);
   --blue: rgb(82, 148, 226);
+  
+  background-color: var(--grey)
 
-  background-color: var(--grey);
 }
- 
-
 
 /* NAV BAR */
 
@@ -21,21 +20,24 @@
   margin: -10px;
   overflow:hidden;
   justify-content: space-evenly;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 .nav a{
+  height: 30px;
+  margin: auto;
+  padding: 5px 20px 5px 20px;
+  border-radius: 5px;
   color: black;
   font-style: none;
   display:inline-block;
   text-decoration: none;
-  margin-right:20px;
-  margin-top: 10px;
   font-size: x-large;
 }
 
 .nav a:hover{
- color:#a51eff;
-
-
+  color:var(--grey);
+  background-color: var(--blue);
 }
 
 /* Top welcome viewport*/
@@ -45,7 +47,6 @@
   height: 100vh;
   align-content: center;
   overflow: hidden;
-
 }
 /*.bg-image{
   width: 100vw;
@@ -155,11 +156,12 @@
   width: 100vw;
   height: 50vh;
   width: 70%;
-  display: grid;
-  grid: repeat(1, 286px) / auto-flow;
-  column-gap: 80px;
+  display: flex;
+  /*grid: repeat(1, 286px) / auto-flow;
+  column-gap: 80px;*/
+  flex-wrap: wrap;
   margin: auto;
-  padding-top: 200px ;
+  padding-top: 100px;
 /*  grid-template-columns: 190px 254px;
   column-gap: 80px;
   row-gap: 60px; */
