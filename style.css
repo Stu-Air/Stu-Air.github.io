@@ -22,7 +22,7 @@ svg {
   background-repeat: no-repeat;
   max-width: 100vw;
   margin: -10px;
-
+}
 
 /* NAV BAR */
 
@@ -321,8 +321,6 @@ svg {
 @media (min-width: 1080px) {
 }
 */
-
-
 
 /* Extra small devices (phones, 600px and down) 
 @media only screen and (max-width: 600px) {
