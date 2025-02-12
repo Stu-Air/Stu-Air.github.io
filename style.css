@@ -38,12 +38,12 @@ svg {
   background-color: rgba(82, 148, 226, 0.75);
   position: fixed;
   display: flex;
-  margin: -10px;
+  margin: auto auto -10px -10px;
   z-index: 10;
   overflow: hidden;
   justify-content: space-evenly;
-  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
+  max-width: 2000px;
 }
 
 .nav a {
@@ -75,13 +75,15 @@ svg {
 
 .top {
   display: flex;
-  width: 70vh;
+  width: 90vw;
+  max-width: 1000px ;
   margin: auto;
-  justify-content: space-evenly;
+  justify-content: space-around;
   border-radius: 25px;
   flex-wrap: wrap;
   background: var(--gradient);
   color: black;
+  margin-top: 100px;
 }
 
 .welcome {
@@ -126,11 +128,11 @@ svg {
 }
 #next-button {
   font-size: 35px;
-  background-color: transparent; /*black;*/
+  background-color: transparent;
   color: var(--text);
   width: 65px;
   height: 65px;
-  border: 2px solid var(--lightestGray);
+  border: 2px solid var(--text);
   border-radius: 50%;
   cursor: pointer;
   animation: bounce_513 1s infinite;
@@ -306,25 +308,117 @@ svg {
   height: 80px;
 }
 
+.langText{
+  color: var(--text);
+  display:flex;
+  flex-direction:row;
+  margin: 0% 2% 3% 3%;  
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
 
 
 
 
-.form-container {
+
+#contact {
   width: 70vw;
   background: linear-gradient(var(--darkmode), var(--darkmode)) padding-box,
     linear-gradient(145deg, var(--darkmode) 35%, purple, var(--blue)) border-box;
   border: 2px solid transparent;
   padding: 32px 24px;
-
   gap: 20px;
   box-sizing: border-box;
   border-radius: 16px;
-
-  font-size: xx-large;
+  font-size: large;
   color: var(--text);
   margin: auto;
+  text-align: center;
 }
+
+#contact i {
+  color: var(--text);
+}
+#contact a{
+  color: var(--text);
+  text-decoration: none;
+}
+
+.font-bold{
+  font-weight: 700;
+  font-size: larger;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  display: block;
+  --width-of-switch: 3.5em;
+  --height-of-switch: 2em;
+  /* size of sliding icon -- sun and moon */
+  --size-of-icon: 1.4em;
+  /* it is like a inline-padding of switch */
+  --slider-offset: 0.3em;
+  position: fixed;
+  width: var(--width-of-switch);
+  height: var(--height-of-switch);
+  margin: 95vh auto auto 90%;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--darkmode);
+  transition: .4s;
+  border-radius: 30px;
+  box-shadow: 3px 2px 3px 2px var(--lightestGray);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-of-icon,1.4em);
+  width: var(--size-of-icon,1.4em);
+  border-radius: 20px;
+  left: var(--slider-offset,0.3em);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
+  ;
+ transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #303136;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+  background: #303136;
+  /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+
+
+
+
+
+
+
+
 
 /*
 

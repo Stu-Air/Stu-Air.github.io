@@ -1,14 +1,16 @@
-var darkmode = 0;
+var isChecked = document.getElementById('checkbox');
 
 
-if (darkmode == 0) {
+function toggle(){ 
+     if (isChecked.checked == true) {
+        /* light */
+        document.querySelector(':root').style.setProperty('--text', '#fff');
+        document.querySelector(':root').style.setProperty('--darkmode', 'var(--darkGray)');
 
-/***** DARKMODE ******/
-/* light */
-document.querySelector(':root').style.setProperty('--text', 'black');
-document.querySelector(':root').style.setProperty('--darkmode', '#fff');
-} else {
-/* dark */
-document.querySelector(':root').style.setProperty('--darkmode', 'var(--darkGray)');
-document.querySelector(':root').style.setProperty('--text', '#fff');
+    } else if (isChecked.checked == false) {
+        /*  dark */
+        document.querySelector(':root').style.setProperty('--text', 'black');
+        document.querySelector(':root').style.setProperty('--darkmode', '#fff');
+    }
+    return;
 }
