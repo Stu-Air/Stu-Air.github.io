@@ -304,6 +304,10 @@ svg {
   text-align: center;
 }
 
+#skills h2 {
+  text-decoration: underline;
+}
+
 .icons img {
   height: 80px;
 }
@@ -470,8 +474,8 @@ input:checked + .slider:before {
     background: transparent;
 
     background: -webkit-linear-gradient( -45deg,
-    purple 0%,
-    rgb(82, 148, 226) 100%);
+    rgb(82, 148, 226) 0%,
+    purple 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -486,6 +490,18 @@ input:checked + .slider:before {
     height: 100%;
     overflow:visible;
   }
+  .switch {
+    margin: 95vh auto auto 80%;
+  }
+
+  #skills .icons, .langText{
+   flex-direction: column;
+  }
+
+  .next-button {
+    padding-top: 50px;
+  }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
