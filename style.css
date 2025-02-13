@@ -158,16 +158,11 @@ svg {
   width: 100vw;
   width: 70%;
   display: flex;
-  /*grid: repeat(1, 286px) / auto-flow;
-  column-gap: 80px;*/
   flex-wrap: wrap;
   margin: auto;
   padding-top: 100px;
-  /*  grid-template-columns: 190px 254px;
-  column-gap: 80px; */
   row-gap: 30px;
   justify-content: space-around;
-  
   
 }
 .project {
@@ -200,54 +195,6 @@ svg {
   border-radius: 12px;
   
 }
-
-/*.card::before {
-  margin: auto;
-  width: 200px;
-  height: 264px;
-  border-radius: 8px;
-  z-index: -1;
-}
-
-.card {
-  position: relative;
-  width: 190px;
-  height: 254px;
-  background-color: #383c4a;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  padding: 12px;
-  /*gap: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--lightestGray);
-  justify-content: space-around;
-  margin: 50px;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 200px;
-  height: 264px;
-  border-radius: 8px;
-  background: var(--gradient);
-  z-index: -1;
-  pointer-events: none;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card::after {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  inset: 0;
-  transform: translate3d(0, 0, 0) scale(0.95);
-  filter: blur(20px);
-}*/
 
 .heading {
   font-size: 20px;
@@ -291,21 +238,34 @@ svg {
   font-size: xx-large;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
-
-#skills .icons{
-
+#skills .icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
+  justify-content: center;
+}
+.skill {
   color: var(--text);
   display:flex;
-  flex-direction:row;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin: 0% 2% 3% 3%;  
   align-items: center;
   justify-content: space-around;
   text-align: center;
+  width: 200px;
+  height: 250px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.30);
+  border-radius: 50px;
+  padding-top: 2%;
 }
 
 #skills h2 {
   text-decoration: underline;
+  flex-direction: column;
 }
 
 .icons img {
@@ -321,9 +281,6 @@ svg {
   justify-content: space-around;
   text-align: center;
 }
-
-
-
 
 
 #contact {
@@ -416,54 +373,6 @@ input:checked + .slider:before {
 }
 
 
-
-
-
-
-
-
-
-
-/*
-
-@media (min-width: 360px) {
-  .top {
-    display: flex;
-    width: 100%;
-    margin: auto;
-    justify-content: space-evenly;
-    border-radius: 0px;
-    box-shadow: 0px 0px lightgray;
-    flex-wrap: wrap;
-  }
-}
-
-@media (min-width: 540px) {
-  .top {
-    display: flex;
-    width: 100%;
-    margin: auto;
-    justify-content: space-evenly;
-    border-radius: 0px;
-    box-shadow: 0px 0px lightgray;
-    flex-wrap: wrap;
-  }
-}
-@media (min-width: 780px) {
-  .top {
-    display: flex;
-    width: 80%;
-    margin: auto;
-    justify-content: space-evenly;
-    border-radius: 25px;
-    box-shadow: 3px 3px black;
-    flex-wrap: wrap;
-  }
-}
-@media (min-width: 1080px) {
-}
-*/
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .top {
@@ -492,10 +401,6 @@ input:checked + .slider:before {
   }
   .switch {
     margin: 95vh auto auto 80%;
-  }
-
-  #skills .icons, .langText{
-   flex-direction: column;
   }
 
   .next-button {
