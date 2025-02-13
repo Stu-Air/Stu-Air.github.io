@@ -181,13 +181,15 @@ svg {
   background:linear-gradient(rgba(75,81,98, 0.50) 50% , var(--darkmode) );
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  color: var(--text);
 }
 
 .card:hover {
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.30);
 }
-
+.card a{
+  text-decoration: none;
+  color:var(--text);
+}
 .card img{
   width: 190px;
   height: 150px;
@@ -263,7 +265,7 @@ svg {
   padding-top: 2%;
 }
 
-#skills h2 {
+#skills h2, #skills h4 {
   text-decoration: underline;
   flex-direction: column;
 }
@@ -357,8 +359,7 @@ svg {
   top: 50%;
   transform: translateY(-50%);
   background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
-  ;
- transition: .4s;
+  transition: .4s;
 }
 
 input:checked + .slider {
