@@ -40,8 +40,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border: 1px solid;
+  overflow: hidden;
 }
 
 .process {
@@ -79,4 +78,26 @@ h1 {
 .footer a,
 .card a {
   color: black;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .image {
+    overflow: hidden;
+    width: 100vw;
+    margin: auto auto auto -2%;
+    padding: 0;
+  }
+  .image img {
+    scale: 150%;
+    height: 35vh;
+    width: 100vw;
+
+    overflow: hidden;
+  }
+  .video iframe {
+    margin: auto auto auto -4%;
+    scale: 95%;
+    width: 100vw;
+  }
 }
