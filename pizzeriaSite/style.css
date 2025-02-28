@@ -110,8 +110,8 @@ a {
   color: lightgreen;
 }
 
-/*franchiee page*/
-.franchiee,
+/*franchisee page*/
+.franchisee,
 .about {
   padding: 10px;
   margin-top: 50px;
@@ -160,6 +160,46 @@ a {
   margin-top: 50px;
   border-radius: 10px;
   box-shadow: 3px 3px #ddd;
+}
+/*Order*/
+.pizza {
+  width: 100%;
+  height: fit-content;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
+  border: 1px solid orange;
+  box-shadow: 3px 3px;
+}
+.pizzaDes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  height: fit-content;
+  margin: 5% 0% 0% 1%;
+  padding-bottom: 2%;
+}
+.pizzaImg {
+  width: 100px;
+  height: fit-content;
+  margin: -19% 0% 0% 70%;
+}
+.pizzaPrice {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  margin: -10% 0% 0% 88%;
+  color: blue;
+}
+.addbtn {
+  width: 130px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  align-content: center;
+  text-align: center;
+  margin: auto auto auto auto;
 }
 
 /* Extra small devices (phones, 600px and down) */
