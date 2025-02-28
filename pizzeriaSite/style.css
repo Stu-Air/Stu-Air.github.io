@@ -12,6 +12,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-align: center;
   color: black;
 }
 
@@ -28,8 +29,10 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 5px;
   align-items: center;
   height: 50px;
+  padding-bottom: 10%;
 }
 
 #navbar a {
@@ -48,12 +51,13 @@ a {
 }
 
 .welcome {
-  height: 200px;
+  height: fit-content;
   width: 99%;
-  border: 2px solid;
   border-radius: 20px;
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .deal {
@@ -75,27 +79,32 @@ a {
 }
 
 .cart {
-  font-size: 20px;
-  margin: auto;
+  height: 50px;
+  width: 50px;
   position: fixed;
-  content: "";
-  border-radius: 20px;
-  left: 91.2%;
-  top: 89.6%;
-  z-index: 1;
-  color: white;
-}
-.cart i {
-  font-size: xx-large;
-  color: green;
-  margin: auto;
-  position: fixed;
-  content: "";
-  border-radius: 20px;
   left: 90%;
   top: 90%;
-  z-index: -1;
+  text-align: center;
 }
+
+.cart span {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  font-size: 15px;
+  z-index: 1;
+  color: white;
+  margin: 5% -80%;
+}
+
+.cart i {
+  height: 50px;
+  width: 50px;
+  font-size: xx-large;
+  color: green;
+  align-content: center;
+}
+
 .cart i:hover,
 .cart:hover {
   color: lightgreen;
@@ -142,4 +151,46 @@ a {
   font-weight: 300;
   font-style: italic;
   color: rgb(252, 76, 76);
+}
+
+/*FAQ*/
+.faq {
+  text-align: center;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 3px 3px #ddd;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    max-width: 95%;
+  }
+  .cart {
+    background-color: darkred;
+    border-radius: 10px;
+    left: 80%;
+    top: 90%;
+  }
+  .deal {
+    font-size: medium;
+    margin: -23% 1%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
