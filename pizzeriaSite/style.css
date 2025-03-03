@@ -153,7 +153,7 @@ a {
   color: rgb(252, 76, 76);
 }
 
-/*FAQ*/
+/*FAQ Page*/
 .faq {
   text-align: center;
   padding: 10px;
@@ -161,34 +161,36 @@ a {
   border-radius: 10px;
   box-shadow: 3px 3px #ddd;
 }
-/*Order*/
+/*Order Page*/
 .pizza {
   width: 100%;
-  height: fit-content;
-  padding-bottom: 2%;
+  height: 200px;
   margin-bottom: 2%;
   border: 1px solid orange;
   box-shadow: 3px 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 3%;
 }
 .pizzaDes {
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
+  width: 50%;
   height: fit-content;
-  margin: 5% 0% 0% 1%;
-  padding-bottom: 2%;
+  margin-left: 2%;
 }
 .pizzaImg {
   width: 100px;
   height: fit-content;
-  margin: -19% 0% 0% 70%;
+  margin-top: 4%;
 }
 .pizzaPrice {
   width: fit-content;
   height: fit-content;
   display: flex;
   justify-content: space-around;
-  margin: -10% 0% 0% 88%;
+  margin-top: 6%;
   color: blue;
 }
 .addbtn {
@@ -199,7 +201,154 @@ a {
   color: white;
   align-content: center;
   text-align: center;
-  margin: auto auto auto auto;
+  margin-top: 7%;
+  align-items: center;
+  font-family: "Jersey 15", serif;
+  font-size: x-large;
+  border: none;
+}
+.underline {
+  text-decoration: double underline;
+  font-size: 50px;
+}
+
+/*Cart Page*/
+
+.cart-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+.cart-row {
+  display: flex;
+}
+
+.cart-header-item {
+  width: 45%;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cart-header-price {
+  width: 25%;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+.cart-header-quantity {
+  width: 25%;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cart-item {
+  margin-top: 2%;
+  width: 45%;
+  text-align: start;
+  align-items: center;
+  display: flex;
+}
+.cart-item-image {
+  width: 75px;
+  height: auto;
+  border-radius: 10px;
+}
+.cart-item-title {
+  color: #333;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+}
+
+.cart-item-price {
+  width: 25%;
+  font-size: 1.2em;
+  color: #333;
+  align-items: center;
+  display: flex;
+}
+.cart-item-quantity {
+  width: 20%;
+  align-items: center;
+  display: flex;
+}
+
+.cart-quantity-input {
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid green;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin: 0% 35px;
+}
+
+.btn-remove {
+  color: white;
+  background-color: #eb5757;
+  border: none;
+  border-radius: 0.3em;
+  font-weight: bold;
+  padding: 6% 12%;
+}
+.btn-remove:hover {
+  background-color: #cc4c4c;
+}
+
+.cart-total {
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.cart-total-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: black;
+  margin-right: 20px;
+}
+.cart-total-price {
+  color: #333;
+  font-size: 1.1em;
+}
+
+.btn-purchase {
+  display: block;
+  margin: 40px auto 80px auto;
+
+  width: 130px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: "Jersey 15", serif;
+  font-size: x-large;
+  border: none;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -216,6 +365,27 @@ a {
   .deal {
     font-size: medium;
     margin: -23% 1%;
+  }
+  .pizza {
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    width: 90%;
+    text-align: center;
+  }
+  .pizzaDes {
+    width: 100%;
+  }
+  .pizzaImg {
+    margin-left: -50%;
+  }
+  .pizzaPrice {
+    margin-left: 50%;
+    margin-top: -15%;
+  }
+  .addbtn {
+    position: unset;
   }
 }
 
