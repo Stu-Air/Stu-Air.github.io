@@ -186,6 +186,10 @@ a {
   height: fit-content;
   margin-top: 4%;
 }
+.soda {
+  scale: 80%;
+}
+
 .pizzaPrice {
   width: fit-content;
   height: fit-content;
@@ -271,13 +275,13 @@ a {
   align-items: center;
   display: flex;
   gap: 2%;
-  border: 1px solid;
 }
 .cart-item-image {
   margin-left: 2%;
   width: 75px;
   height: auto;
   border-radius: 10px;
+  scale: 60%;
 }
 .cart-item-title {
   color: #333;
@@ -288,6 +292,7 @@ a {
 
 .cart-item-price {
   margin-top: 2%;
+  margin-left: 2%;
   width: 25%;
   height: 75px;
   font-size: 1.2em;

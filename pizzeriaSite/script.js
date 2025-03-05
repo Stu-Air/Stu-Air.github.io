@@ -34,10 +34,14 @@ function purchaseClicked() {
     cartItems.removeChild(cartItems.firstChild);
   }
   updateCartTotal();
+  document.getElementsByClassName("cartNo")[0].innerText = "";
 }
 
 function removeCartItem(event) {
   var buttonClicked = event.target;
+  document.getElementsByClassName("cartNo")[0].innerText =
+    Math.round(document.getElementsByClassName("cartNo")[0].innerText) -
+    document.getElementsByClassName("cart-quantity-input")[0].value;
   buttonClicked.parentElement.parentElement.remove();
   updateCartTotal();
 }
@@ -47,7 +51,11 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
+  /*document.getElementsByClassName("cartNo")[0].innerText = Math.round( document.getElementsByClassName("cartNo")[0].innerText) - parseFloat(input.value);*/
   updateCartTotal();
+  document.getElementsByClassName("cartNo")[0].innerText =
+    Math.round(document.getElementsByClassName("cartNo")[0].innerText) +
+    parseFloat(input.value);
 }
 
 function addToCartClicked(event) {
@@ -56,9 +64,11 @@ function addToCartClicked(event) {
   var title = shopItem.getElementsByClassName("shop-item-title")[0].innerText;
   var price = shopItem.getElementsByClassName("pizzaPrice")[0].innerText;
   var imageSrc = shopItem.getElementsByClassName("pizzaImg")[0].src;
+  document.getElementsByClassName("cartNo")[0].innerText =
+    Math.round(document.getElementsByClassName("cartNo")[0].innerText) + 1;
   addItemToCart(title, price, imageSrc);
+
   updateCartTotal();
-  console.log(i);
 }
 
 function addItemToCart(title, price, imageSrc) {
@@ -68,7 +78,9 @@ function addItemToCart(title, price, imageSrc) {
   var cartItemNames = cartItems.getElementsByClassName("cart-item-title");
   for (var i = 0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText == title) {
-      alert("This item is already added to the cart");
+      /*alert("This item is already added to the cart");*/
+      document.getElementsByClassName("cart-quantity-input")[i].value++;
+
       return;
     }
   }
@@ -90,13 +102,6 @@ function addItemToCart(title, price, imageSrc) {
   cartRow
     .getElementsByClassName("cart-quantity-input")[0]
     .addEventListener("change", quantityChanged);
-}
-
-function quantityChanged(event) {
-  var input = event.target;
-  if (isNaN(input.value) || input.value <= 0) {
-    input.value = 1;
-  }
 }
 
 function updateCartTotal() {
