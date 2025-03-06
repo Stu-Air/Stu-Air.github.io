@@ -14,6 +14,7 @@ function ready() {
   var quantityInputs = document.getElementsByClassName("cart-quantity-input");
   for (var i = 0; i < quantityInputs.length; i++) {
     var input = quantityInputs[i];
+
     input.addEventListener("change", quantityChanged);
   }
 
@@ -34,14 +35,10 @@ function purchaseClicked() {
     cartItems.removeChild(cartItems.firstChild);
   }
   updateCartTotal();
-  document.getElementsByClassName("cartNo")[0].innerText = "";
 }
 
 function removeCartItem(event) {
   var buttonClicked = event.target;
-  document.getElementsByClassName("cartNo")[0].innerText =
-    Math.round(document.getElementsByClassName("cartNo")[0].innerText) -
-    document.getElementsByClassName("cart-quantity-input")[0].value;
   buttonClicked.parentElement.parentElement.remove();
   updateCartTotal();
 }
@@ -51,11 +48,7 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
-  /*document.getElementsByClassName("cartNo")[0].innerText = Math.round( document.getElementsByClassName("cartNo")[0].innerText) - parseFloat(input.value);*/
   updateCartTotal();
-  document.getElementsByClassName("cartNo")[0].innerText =
-    Math.round(document.getElementsByClassName("cartNo")[0].innerText) +
-    parseFloat(input.value);
 }
 
 function addToCartClicked(event) {
@@ -64,10 +57,7 @@ function addToCartClicked(event) {
   var title = shopItem.getElementsByClassName("shop-item-title")[0].innerText;
   var price = shopItem.getElementsByClassName("pizzaPrice")[0].innerText;
   var imageSrc = shopItem.getElementsByClassName("pizzaImg")[0].src;
-  document.getElementsByClassName("cartNo")[0].innerText =
-    Math.round(document.getElementsByClassName("cartNo")[0].innerText) + 1;
   addItemToCart(title, price, imageSrc);
-
   updateCartTotal();
 }
 
@@ -121,4 +111,5 @@ function updateCartTotal() {
   total = Math.round(total * 100) / 100;
   document.getElementsByClassName("cart-total-price")[0].innerText =
     "Em" + " " + total;
+  document.getElementsByClassName("cartNo")[0].innerText = "Em" + " " + total;
 }
