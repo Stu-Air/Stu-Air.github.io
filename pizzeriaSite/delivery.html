@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.6.0/css/all.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Delivery - Phoebe's Pizzeria</title>
+    <link rel="shortcut icon" href="assets/pizzeria.jpeg" type="image/x-icon" />
+  </head>
+  <body>
+    <a href="index.html"
+      ><div class="header">
+        <img src="assets/pizzeria.jpeg" alt="pizzeria-logo" />
+        <h2>Phoebe's Pizzeria</h2>
+      </div></a
+    >
+    <nav id="navbar">
+      <a href="order.html"> Order </a>
+      <a href="faq.html"> FAQ </a>
+      <a href="franchisee.html"> franchisee Opportunity </a>
+      <a href="contact.html"> Contact </a>
+    </nav>
+    <form>
+      <div class="name">
+        Player Name
+        <input
+          class="inputName"
+          placeholder="Player Name"
+          type="text"
+          required
+          name="name"
+          required
+        />
+      </div>
+      <div class="location">
+        Delivery Location
+        <div>
+          X
+          <input
+            class="inputLocation1"
+            type="number"
+            min="-35000"
+            max="35000"
+            placeholder="X"
+          />
+          Y
+          <input
+            class="inputLocation2"
+            type="number"
+            min="-35000"
+            max="35000"
+            placeholder="Y"
+          />
+        </div>
+      </div>
+      <div class="select">
+        <select class="inputSelect" type="select">
+          <option value=" ">Survival</option>
+          <option value="1">Skyworld</option>
+        </select>
+      </div>
+    </form>
+    <button class="confirm">Confirm Address</button>
+    <div class="map">
+      <iframe
+        src="https://map.crazy-fools.co.uk/?worldname=world&mapname=flat&zoom=6&x=-3395&y=64&z=-3640"
+        frameborder="0"
+      >
+      </iframe>
+    </div>
+    <button class="deliver">Deliver Order</button>
+
+    <div class="footer">
+      © 2025 Copyright Phoebe's Pizzera Corporation, CFUK, Survival, -3395,-3640
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

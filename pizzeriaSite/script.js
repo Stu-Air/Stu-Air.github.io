@@ -26,6 +26,10 @@ function ready() {
   document
     .getElementsByClassName("btn-purchase")[0]
     .addEventListener("click", purchaseClicked);
+
+  document
+    .getElementsByClassName("deliver")[0]
+    .addEventListener("click", purchaseClicked);
 }
 
 function purchaseClicked() {
@@ -113,3 +117,20 @@ function updateCartTotal() {
     "Em" + " " + total;
   document.getElementsByClassName("cartNo")[0].innerText = "Em" + " " + total;
 }
+
+var x = document.getElementsByClassName("inputLocation1")[0].value;
+var y = document.getElementsByClassName("inputLocation2")[0].value;
+
+document
+  .getElementsByClassName("confirm")
+  .addEventListener(
+    "click",
+    (document.getElementsByClassName(
+      "map"
+    ).innerHTML = `<iframe src="https://map.crazy-fools.co.uk/?worldname=world&mapname=flat&zoom=6&x=${x}&y=64&z=${y}" frameborder="0"></iframe>`)
+  );
+
+/*
+    survival - "https://map.crazy-fools.co.uk/?worldname=world&mapname=flat&zoom=6&x=-3395&y=64&z=-3640"
+    skylands - "https://map.crazy-fools.co.uk/?worldname=world_heaven&mapname=flat&zoom=6&x=-29&y=64&z=109"
+*/

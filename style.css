@@ -1,12 +1,8 @@
 :root {
-  --gradient: linear-gradient(
-    -45deg,
-    purple 0%,
-    rgb(82, 148, 226) 100%
-  );
+  --gradient: linear-gradient(-45deg, purple 0%, rgb(82, 148, 226) 100%);
   --darkGray: rgb(56, 60, 74);
   --lighterGray: rgb(64, 69, 82);
-  --lightGray: rgb(75,81,98);
+  --lightGray: rgb(75, 81, 98);
   --lightestGray: rgb(124, 129, 140);
   --blue: rgb(82, 148, 226);
   --text: #000;
@@ -14,6 +10,7 @@
 
   background-color: var(--darkmode);
   color: var(--text);
+  font-family: "Varela Round", sans-serif;
 }
 
 svg {
@@ -41,9 +38,7 @@ svg {
   margin: auto auto -10px -10px;
   z-index: 10;
   overflow: hidden;
-  justify-content: space-evenly;
   backdrop-filter: blur(8px);
-  max-width: 2000px;
 }
 
 .nav a {
@@ -76,7 +71,7 @@ svg {
 .top {
   display: flex;
   width: 90vw;
-  max-width: 1000px ;
+  max-width: 1000px;
   margin: auto;
   justify-content: space-around;
   border-radius: 25px;
@@ -163,39 +158,36 @@ svg {
   padding-top: 100px;
   row-gap: 30px;
   justify-content: space-around;
-  
 }
 .project {
   width: 200px;
   height: 200px;
   border-radius: 25px;
   flex-wrap: wrap;
-  
 }
 
-.card{
+.card {
   width: 190px;
   height: 254px;
   padding: 32px 24px;
-  border-radius: 16px; 
-  background:linear-gradient(rgba(75,81,98, 0.50) 50% , var(--darkmode) );
+  border-radius: 16px;
+  background: linear-gradient(rgba(75, 81, 98, 0.5) 50%, var(--darkmode));
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
 .card:hover {
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.30);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
-.card a{
+.card a {
   text-decoration: none;
-  color:var(--text);
+  color: var(--text);
 }
-.card img{
+.card img {
   width: 190px;
   height: 150px;
-  border:1px solid var(--blue);
+  border: 1px solid var(--blue);
   border-radius: 12px;
-  
 }
 
 .heading {
@@ -208,14 +200,13 @@ svg {
   font-size: 14px;
 }
 
-
 .aboutMe {
   width: 70vw;
   background: linear-gradient(var(--darkmode), var(--darkmode)) padding-box,
-    linear-gradient(145deg, var(--darkmode) 35%, purple, var(--blue)) border-box;
+    linear-gradient(145deg, rgba(221, 221, 221, 0.3) 35%, purple, var(--blue))
+      border-box;
   border: 2px solid transparent;
   padding: 32px 24px;
-
 
   box-sizing: border-box;
   border-radius: 16px;
@@ -226,14 +217,15 @@ svg {
   font-size: large;
 }
 
-#skills{
+#skills {
   width: 70vw;
   margin: 50px auto;
   text-align: center;
   color: var(--text);
   width: 70vw;
   background: linear-gradient(var(--darkmode), var(--darkmode)) padding-box,
-    linear-gradient(-145deg, var(--darkmode) 35%, purple, var(--blue)) border-box;
+    linear-gradient(-145deg, rgba(221, 221, 221, 0.3) 35%, purple, var(--blue))
+      border-box;
   border: 2px solid transparent;
   padding: 32px 24px;
   border-radius: 16px;
@@ -251,21 +243,22 @@ svg {
 }
 .skill {
   color: var(--text);
-  display:flex;
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 0% 2% 3% 3%;  
+  margin: 0% 2% 3% 3%;
   align-items: center;
   justify-content: space-around;
   text-align: center;
   width: 200px;
   height: 250px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.30);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
   border-radius: 50px;
   padding-top: 2%;
 }
 
-#skills h2, #skills h4 {
+#skills h2,
+#skills h4 {
   text-decoration: underline;
   flex-direction: column;
 }
@@ -274,21 +267,21 @@ svg {
   height: 80px;
 }
 
-.langText{
+.langText {
   color: var(--text);
-  display:flex;
-  flex-direction:row;
-  margin: 0% 2% 3% 3%;  
+  display: flex;
+  flex-direction: row;
+  margin: 0% 2% 3% 3%;
   align-items: center;
   justify-content: space-around;
   text-align: center;
 }
 
-
 #contact {
   width: 70vw;
   background: linear-gradient(var(--darkmode), var(--darkmode)) padding-box,
-    linear-gradient(145deg, var(--darkmode) 35%, purple, var(--blue)) border-box;
+    linear-gradient(145deg, rgba(221, 221, 221, 0.3) 35%, purple, var(--blue))
+      border-box;
   border: 2px solid transparent;
   padding: 32px 24px;
   gap: 20px;
@@ -303,12 +296,12 @@ svg {
 #contact i {
   color: var(--text);
 }
-#contact a{
+#contact a {
   color: var(--text);
   text-decoration: none;
 }
 
-.font-bold{
+.font-bold {
   font-weight: 700;
   font-size: larger;
 }
@@ -344,7 +337,7 @@ svg {
   right: 0;
   bottom: 0;
   background-color: var(--darkmode);
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 30px;
   box-shadow: 3px 2px 3px 2px var(--lightestGray);
 }
@@ -352,14 +345,14 @@ svg {
 .slider:before {
   position: absolute;
   content: "";
-  height: var(--size-of-icon,1.4em);
-  width: var(--size-of-icon,1.4em);
+  height: var(--size-of-icon, 1.4em);
+  width: var(--size-of-icon, 1.4em);
   border-radius: 20px;
-  left: var(--slider-offset,0.3em);
+  left: var(--slider-offset, 0.3em);
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
-  transition: .4s;
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -367,12 +360,11 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
   background: #303136;
   /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
   box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }
-
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -383,9 +375,11 @@ input:checked + .slider:before {
     margin-top: 50px;
     background: transparent;
 
-    background: -webkit-linear-gradient( -45deg,
-    rgb(82, 148, 226) 0%,
-    purple 100%);
+    background: -webkit-linear-gradient(
+      -45deg,
+      purple 0%,
+      rgb(82, 148, 226) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -394,11 +388,10 @@ input:checked + .slider:before {
   }
   .hi {
     margin-left: 20%;
-   
   }
   #viewport {
     height: 100%;
-    overflow:visible;
+    overflow: visible;
   }
   .switch {
     margin: 95vh auto auto 80%;
@@ -407,27 +400,20 @@ input:checked + .slider:before {
   .next-button {
     padding-top: 50px;
   }
-
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
-} 
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
-} 
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
 }
-
-

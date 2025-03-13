@@ -361,10 +361,12 @@ a {
   font-size: 1.1em;
 }
 
-.btn-purchase {
+.btn-purchase,
+.deliver,
+.confirm,
+.btn-delivery {
   display: block;
   margin: 40px auto 80px auto;
-
   width: 130px;
   height: 40px;
   border-radius: 10px;
@@ -375,6 +377,69 @@ a {
   align-items: center;
   font-family: "Jersey 15", serif;
   font-size: x-large;
+}
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: auto 110px auto auto;
+}
+.confirm {
+  font-size: large;
+}
+
+/*Deliver Page*/
+
+form {
+  font-size: 30px;
+  width: 95%;
+  height: 300px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  vertical-align: middle;
+}
+.name {
+  width: 95%;
+  text-align: center;
+}
+.inputName {
+  text-align: center;
+  width: 50%;
+  vertical-align: middle;
+  font-size: large;
+}
+.location {
+  text-align: center;
+  width: 95%;
+}
+.inputLocation1 {
+  text-align: center;
+  width: 30%;
+  vertical-align: middle;
+  font-size: large;
+}
+.inputLocation2 {
+  text-align: center;
+  width: 30%;
+  font-size: large;
+  vertical-align: middle;
+}
+.select {
+  text-align: center;
+  margin: -2em auto;
+  width: 95%;
+  height: 40px;
+}
+.inputSelect {
+  width: 30%;
+  text-align: center;
+  font-size: large;
+}
+.confirm {
+  margin: -6% auto auto auto;
+}
+.deliver {
 }
 
 /* Extra small devices (phones, 600px and down) 
