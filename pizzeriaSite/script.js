@@ -26,10 +26,6 @@ function ready() {
   document
     .getElementsByClassName("btn-purchase")[0]
     .addEventListener("click", purchaseClicked);
-
-  document
-    .getElementsByClassName("deliver")[0]
-    .addEventListener("click", purchaseClicked);
 }
 
 function purchaseClicked() {
@@ -118,19 +114,36 @@ function updateCartTotal() {
   document.getElementsByClassName("cartNo")[0].innerText = "Em" + " " + total;
 }
 
-var x = document.getElementsByClassName("inputLocation1")[0].value;
-var y = document.getElementsByClassName("inputLocation2")[0].value;
+document
+  .getElementsByClassName("deliver")[0]
+  .addEventListener("click", purchaseClicked);
 
 document
-  .getElementsByClassName("confirm")
-  .addEventListener(
-    "click",
-    (document.getElementsByClassName(
-      "map"
-    ).innerHTML = `<iframe src="https://map.crazy-fools.co.uk/?worldname=world&mapname=flat&zoom=6&x=${x}&y=64&z=${y}" frameborder="0"></iframe>`)
-  );
+  .getElementsByClassName("confirm")[0]
+  .addEventListener("click", confirmAddress);
 
-/*
-    survival - "https://map.crazy-fools.co.uk/?worldname=world&mapname=flat&zoom=6&x=-3395&y=64&z=-3640"
-    skylands - "https://map.crazy-fools.co.uk/?worldname=world_heaven&mapname=flat&zoom=6&x=-29&y=64&z=109"
-*/
+function confirmAddress() {
+  var x = document.getElementsByClassName("inputLocation1")[0].value;
+  var y = document.getElementsByClassName("inputLocation2")[0].value;
+  var world = document.getElementsByClassName("inputSelect")[0].value;
+
+  if (y === "") {
+    y = "0";
+  }
+  if (x === "") {
+    x = "0";
+  }
+  if (world === "0") {
+    world = "world";
+  } else {
+    world = "world_heaven";
+  }
+  console.log(x);
+  console.log(y);
+  console.log(world);
+
+  document.getElementsByClassName(
+    "map"
+  )[0].innerHTML = `<iframe src="https://map.crazy-fools.co.uk/?worldname=${world}&mapname=flat&zoom=6&x=${x}&y=64&z=${y}" frameborder="0">
+      </iframe>`;
+}
