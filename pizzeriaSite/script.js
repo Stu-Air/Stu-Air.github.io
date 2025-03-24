@@ -138,9 +138,6 @@ function confirmAddress() {
   } else {
     world = "world_heaven";
   }
-  console.log(x);
-  console.log(y);
-  console.log(world);
 
   document.getElementsByClassName(
     "map"

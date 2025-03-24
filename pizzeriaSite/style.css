@@ -366,7 +366,6 @@ a {
 .confirm,
 .btn-delivery {
   display: block;
-  margin: 40px auto 80px auto;
   width: 130px;
   height: 40px;
   border-radius: 10px;
@@ -379,13 +378,17 @@ a {
   font-size: x-large;
 }
 .btns {
-  display: flex;
+  width: 100%;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
-  margin: auto 110px auto auto;
+  justify-content: space-around;
 }
 .confirm {
   font-size: large;
+}
+.deliver {
+  margin: 40px auto 80px auto;
 }
 
 /*Deliver Page*/
