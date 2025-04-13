@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Orbitron:wght@400..900&family=Playwrite+HU:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.6.0/css/all.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/launchy.jpeg" type="image/x-icon" />
+    <title></title>
+  </head>
+  <body onload="firstRun()">
+    <div id="menuOpen" onclick="settingOpen()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <section id="welcome">
+      <h1 id="greet"></h1>
+      <div class="imgTimeDate">
+        <div id="weather">
+          <div id="current">
+            <div id="currTemp"></div>
+            <div id="currImg"></div>
+          </div>
+          <div id="currDescription"></div>
+          <div id="days">
+            <div id="weatherDays"></div>
+            <div id="daysImg"></div>
+            <div id="daysDescription"></div>
+          </div>
+        </div>
+        <div id="profileImg"></div>
+        <div class="timeDate">
+          <div id="clock"></div>
+          <div id="date"></div>
+        </div>
+      </div>
+    </section>
+    <div id="git"></div>
+    <form id="search" class="engine" action="https://www.google.com/search?q=">
+      <div id="searchIcon"></div>
+      <input class="search" type="text" placeholder="Google Search" required />
+      <button type="submit" id="searchBtn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    <div id="bookmarks">
+      <div id="folder">
+        <div id="folderHeader"></div>
+      </div>
+    </div>
+    <section id="settingsBg">
+      <div id="menuClose" onclick="settingClose()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div id="settings">
+        <h1>Settings</h1>
+        <h3>All</h3>
+        <div id="showToggle">
+          <p>Dark Mode</p>
+          <input type="checkbox" id="showDark" />
+          <label for="showDark" class="toggleSwitch"></label>
+        </div>
+        <br />
+        <h3>Welcome section</h3>
+        <div id="showToggle">
+          <p>Show Welcome</p>
+          <input type="checkbox" id="showWelcome" />
+          <label for="showWelcome" class="toggleSwitch"></label>
+        </div>
+        <div id="showToggle">
+          <p>Show Greet Message</p>
+          <input type="checkbox" id="showGreet" />
+          <label for="showGreet" class="toggleSwitch"></label>
+        </div>
+        <div id="textbox">
+          Name:
+          <input type="text" id="name" placeholder="Name for greet message" />
+        </div>
+        <div id="textbox">
+          Welcome background Image url:
+          <input type="text" id="background" placeholder="Image link" />
+        </div>
+        <div id="textbox">
+          Profile / small Image url:
+          <input type="text" id="smallImg" placeholder="Image link" />
+          <div id="showToggle">
+            <input type="checkbox" id="showProfile" />
+            <label for="showProfile" class="toggleSwitch"></label>
+          </div>
+        </div>
+        <div id="showToggle">
+          <p>Show Time & Date</p>
+          <input type="checkbox" id="showTimeDate" />
+          <label for="showTimeDate" class="toggleSwitch"></label>
+        </div>
+        <h4>Weather</h4>
+        <div id="showToggle">
+          <p>Show Weather</p>
+          <input type="checkbox" id="showWeather" />
+          <label for="showWeather" class="toggleSwitch"></label>
+        </div>
+        <div id="textbox">
+          Postcode:
+          <input type="text" id="postcode" placeholder="Example : E14" />
+        </div>
+        <div id="textbox">
+          Country Code :
+          <input type="text" id="countryCode" placeholder="Example : GB" />
+        </div>
+        <div id="textbox">
+          Open Weather Api Key:
+          <input type="text" id="apiKey" placeholder="OpenWeather Api Key" />
+        </div>
+        <br />
+        <br />
+        <h3>Git Stats & Search bar</h3>
+        <div id="textbox">
+          Github Username:
+          <input type="text" id="gitStats" placeholder="Github Username" />
+          <div id="showToggle">
+            <input type="checkbox" id="showGitStats" />
+            <label for="showGitStats" class="toggleSwitch"></label>
+          </div>
+        </div>
+        <div id="textbox">
+          Search Bar:
+          <select name="searchBar" id="searchBar">
+            <option value="www.google.com">Google</option>
+            <option value="www.duckduckgo.com">DuckDuckGo</option>
+            <option value="search.brave.com">Brave</option>
+            <option value="search.yahoo.com">Yahoo</option>
+            <option value="www.ecosia.org">Ecosia</option>
+          </select>
+          <div id="showToggle">
+            <input type="checkbox" id="showSearchBar" />
+            <label for="showSearchBar" class="toggleSwitch"></label>
+          </div>
+        </div>
+        <br />
+        <br />
+        <h3>Bookmarks section</h3>
+        <div id="showToggle">
+          <p>Bookmarks</p>
+          <input type="checkbox" id="showBookmarks" />
+          <label for="showBookmarks" class="toggleSwitch"></label>
+        </div>
+
+        <div id="textbox">
+          Folder Name :
+          <input type="text" id="folderName" placeholder="New Folder Name" />
+          <button id="folderSaveBtn">Save Folder</button>
+        </div>
+
+        <div class="dropdown">
+          Folder to add bookmark :
+          <select id="folderSelect"></select>
+          <i id="removeFolder" class="fa-regular fa-trash-can"></i>deletes
+          bookmarks!!
+        </div>
+
+        <div id="textbox">
+          Bookmark name :
+          <input type="text" id="bookmarkLinkName" placeholder="Display Name" />
+        </div>
+
+        <div id="textbox">
+          Bookmark url :
+          <input
+            type="text"
+            id="bookmarkLinkUrl"
+            placeholder="URL Link https://"
+          />
+          <button id="linkSaveBtn">Save Link</button>
+        </div>
+        <div class="dropdown">
+          Delete bookmarks in folder :
+          <select id="linkSelect"></select>
+          <i id="removeLink" class="fa-regular fa-trash-can"></i>
+        </div>
+
+        <div id="settingBtns">
+          <div class="box-button">
+            <div id="settingSave"><span>Save</span></div>
+          </div>
+          <div class="box-button">
+            <div id="settingReset"><span>Reset All</span></div>
+          </div>
+        </div>
+
+        <section id="contact">
+          <div>
+            <p>
+              Launchy was developed with ❤️ by
+              <span class="font-bold">Stu-Air</span>
+            </p>
+            <a href="https://github.com/Stu-Air"
+              >Github <i class="fa-brands fa-github"></i
+            ></a>
+            /
+            <a href="mailto:stu-air@outlook.com"
+              >Mail <i class="fa-regular fa-envelope"></i
+            ></a>
+          </div>
+        </section>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!--
+          <div class="read">
+            <a href="https://hackaday.com">
+            <a href="https://www.reddit.com/r/unixporn/">
+            <a href="https://dev.to/">
+
+          <div class="game">
+            <i class="fa-solid fa-gamepad"></i> GAME
+            <div class="link">https://en.boardgamearena.com</div>
+            <div class="link">https://www.chess.com</div>
+            <div class="link">https://cssbattle.dev</div>
+
+          <div class="shop">
+            <div class="link">https://www.aliexpress.com</div>
+            <div class="link">https://www.amazon.co.uk</div>
+
+          <div class="tools">
+            <div class="link">https://claude.ai</div>
+            <div class="link">https://chatgpt.com</div>
+            <div class="link">https://picsum.photos</div>
+            <div class="link">https://farbvelo.elastiq.ch</div>
+
+
+          <div class="devTools">
+            <div class="link">https://it-tools.tech</div>
+            <div class="link">https://picsvg.com</div>
+            <div class="link">https://carbon.now.sh</div>
+            <div class="link">https://favicon.io</div>
+-->
