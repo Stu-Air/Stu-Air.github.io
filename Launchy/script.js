@@ -111,7 +111,7 @@ function showGreet() {
     document.getElementById("showGreet").checked = false;
     document.querySelector("#greet").style.setProperty("display", "none");
   }
-  return;
+  return greet();
 }
 
 function showProfile() {
@@ -152,7 +152,7 @@ function showWeather() {
     document.getElementById("showWeather").checked = false;
     document.querySelector("#weather").style.setProperty("display", "none");
   }
-  return;
+  return getWeather();
 }
 
 function showGitStats() {
@@ -525,9 +525,18 @@ document.getElementById("folderSaveBtn").addEventListener("click", () => {
   folderDropdown.innerText = folderName;
   document.getElementById("folderSelect").append(folderDropdown);
   document.getElementById("folderName").value = "";
+
+  const folderHeader = document.createElement("div");
+  folderHeader.id =
+    document.getElementById("folderSelect")[folders.length - 1].value;
+  folderHeader.innerHTML = folderName;
+  document.getElementById("folderHeader").append(folderHeader);
 });
 
 function folderReload() {
+  if (document.getElementById("folderSelect") === "") {
+    document.getElementById("folderselect").value === "";
+  }
   for (let i = 0; i < folders.length; i++) {
     const folderDropdown = document.createElement("option");
     folderDropdown.setAttribute("value", i);
@@ -588,6 +597,9 @@ document.getElementById("linkSaveBtn").addEventListener("click", () => {
 });
 
 const linkReload = () => {
+  if (document.getElementById("linkSelect") === "") {
+    document.getElementById("linkselect").value === "";
+  }
   for (let i = 0; i < bookmarks.length; i++) {
     const linkDropdown = document.createElement("option");
     linkDropdown.setAttribute("value", i);
