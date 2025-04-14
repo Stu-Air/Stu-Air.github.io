@@ -107,11 +107,12 @@ function showGreet() {
   if (Greet) {
     document.getElementById("showGreet").checked = true;
     document.querySelector("#greet").style.setProperty("display", "flex");
+    greet();
   } else if (!Greet) {
     document.getElementById("showGreet").checked = false;
     document.querySelector("#greet").style.setProperty("display", "none");
   }
-  return greet();
+  return;
 }
 
 function showProfile() {
