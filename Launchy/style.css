@@ -12,7 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   background-color: var(--bg);
   color: var(--text);
   font-family: sans-serif;
@@ -228,12 +228,17 @@ body {
 
 /* ################# Bookmark Section ###################### */
 
+#bookmarks {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #folderHeader {
   width: 100%;
   height: fit-content;
   font-family: "Indie Flower", sans-serif;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   gap: 5%;
   font-size: 25px;
@@ -241,6 +246,7 @@ body {
 }
 
 #folder {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,7 +285,7 @@ body {
   position: absolute;
   margin: 3% 0% 0% 0%;
   top: 0%;
-  left: 90%;
+  left: 89%;
 }
 
 #menuClose {
@@ -302,7 +308,7 @@ body {
 }
 
 #settingsBg {
-  width: 100vw;
+  width: 98vw;
   height: 180%;
   margin: 0%;
   display: none;
@@ -458,6 +464,60 @@ body {
   padding: 0;
   margin-bottom: 10px;
   transform: translateY(10px);
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.text {
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.tooltip {
+  width: 200px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  background: #0b798a;
+  color: var(--text);
+  padding: 10px;
+  border-radius: 4px;
+  transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent #0b798a transparent;
+  transform: translateX(-50%);
+}
+
+.tooltip-container:hover .tooltip {
+  width: 200px;
+  top: 150%;
+  opacity: 1;
+  visibility: visible;
+  background: #0e94a0;
+  transform: translate(-50%, -5px);
 }
 
 #contact {

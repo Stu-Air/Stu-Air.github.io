@@ -2,8 +2,6 @@
 function start() {
   localStorage.setItem("firstRun", "true");
   startTime();
-  greet();
-  getWeather();
   showDark();
   showWelcome();
   showGreet();
@@ -218,8 +216,18 @@ function defaultLayout() {
 
 //reset should be a default layout
 document.getElementById("settingReset").addEventListener("click", () => {
-  settingClose();
-  defaultLayout();
+  localStorage.clear();
+  localStorage.setItem("showDark", "true");
+  localStorage.setItem("showWelcome", "true");
+  localStorage.setItem("showGreet", "true");
+  localStorage.setItem("showTimeDate", "true");
+  localStorage.setItem("showSearchBar", "true");
+  localStorage.setItem("engine", document.getElementById("searchBar").value);
+  localStorage.setItem("showProfile", "");
+  localStorage.setItem("showWeather", "");
+  localStorage.setItem("showGitStats", "");
+  localStorage.setItem("showBookmarks", "");
+  location.reload();
 });
 
 document.getElementById("settingSave").addEventListener("click", () => {
@@ -268,11 +276,6 @@ document.getElementById("settingSave").addEventListener("click", () => {
   localStorage.setItem("gitStats", document.getElementById("gitStats").value);
   localStorage.setItem("engine", document.getElementById("searchBar").value);
 
-  //const todos = [todo1, todo2, todo3];
-  //localStorage.setItem("todos", JSON.stringify(todos));
-  //localStorage.setItem('todos:1', JSON.stringify(todo1));
-  //localStorage.setItem('todos:2', JSON.stringify(todo2));
-
   showDark();
   showWelcome();
   showGreet();
@@ -298,6 +301,8 @@ document.getElementById("apiKey").value = localStorage.getItem("apiKey");
 document.getElementById("gitStats").value = localStorage.getItem("gitStats");
 
 const folders = JSON.parse(localStorage.getItem("folders"));
+const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+
 document.getElementById("removeFolder").addEventListener("click", () => {
   folders.splice(document.getElementById("folderSelect").value, 1);
   localStorage.setItem("folders", JSON.stringify(folders));
@@ -311,16 +316,39 @@ document.getElementById("removeFolder").addEventListener("click", () => {
     )
   );
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-  document.getElementById("folderSelect").value = "";
-  folderReload();
+  document
+    .getElementById("folderHeader")
+    .removeChild(
+      document.getElementById(document.getElementById("folderSelect").value)
+    );
+
+  // document.getElementById("folderSelect").value = "";
+  //  folderReload();
+  //  linkReload();
 });
 
-const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
 document.getElementById("removeLink").addEventListener("click", () => {
+  const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  document
+    .getElementById(
+      bookmarks[document.getElementById("linkSelect").value].folder
+    )
+    .removeChild(
+      document.getElementById(
+        bookmarks[document.getElementById("linkSelect").value].name
+      )
+    );
   bookmarks.splice(document.getElementById("linkSelect").value, 1);
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-  document.getElementById("linkSelect").value = "";
-  linkReload();
+  document
+    .getElementById("linkSelect")
+    .removeChild(
+      document.getElementById("linkSelect").children[
+        document.getElementById("linkSelect").value
+      ]
+    );
+  //document.getElementById("linkSelect").value = "";
+  //linkReload();
 });
 
 // ############################# CLOCK ########################
@@ -364,11 +392,11 @@ function checkTime(i) {
 // ############################# Greeting ########################
 
 function greet() {
-  if (new Date().getHours() >= 13) {
+  if (new Date().getHours() >= 12) {
     timeOfDay = "Afternoon";
   }
 
-  if (new Date().getHours() <= 13) {
+  if (new Date().getHours() < 12) {
     timeOfDay = "Morning";
   }
 
@@ -510,97 +538,124 @@ function getWeather() {
 */
 
 document.getElementById("folderSaveBtn").addEventListener("click", () => {
-  if (!localStorage.getItem("folders")) {
+  const folders = JSON.parse(localStorage.getItem("folders"));
+  if (!folders) {
     localStorage.setItem("folders", `[]`);
+    //new Folder Name
+    let folderName = document.getElementById("folderName").value;
+    //folders Array that is made at start
+    var oldFolder = folders;
+    // push new Folder Name into old Array
+    oldFolder.push(folderName);
+    // reload the the new and old array to local storage again
+    localStorage.setItem("folders", JSON.stringify(oldFolder));
+    document.getElementById("folderName").value = "";
+    folderReload();
+  } else {
+    //new Folder Name
+    let folderName = document.getElementById("folderName").value;
+    //folders Array that is made at start
+    var oldFolder = folders;
+    // push new Folder Name into old Array
+    oldFolder.push(folderName);
+    // reload the the new and old array to local storage again
+    localStorage.setItem("folders", JSON.stringify(oldFolder));
+    const folderDropdown = document.createElement("option");
+    folderDropdown.setAttribute("value", folders.length + 1);
+    folderDropdown.innerText = folderName;
+    document.getElementById("folderSelect").append(folderDropdown);
+    const folderHeader = document.createElement("div");
+    folderHeader.id = folders.length;
+    folderHeader.innerHTML = folderName;
+    document.getElementById("folderHeader").append(folderHeader);
+    document.getElementById("folderName").value = "";
   }
-  //new Folder Name
-  let folderName = document.getElementById("folderName").value;
-  //folders Array that is made at start
-  var oldFolder = JSON.parse(localStorage.getItem("folders"));
-  // push new Folder Name into old Array
-  oldFolder.push(folderName);
-  // reload the the new and old array to local storage again
-  localStorage.setItem("folders", JSON.stringify(oldFolder));
-  const folderDropdown = document.createElement("option");
-  folderDropdown.setAttribute("value", folders.length + 1);
-  folderDropdown.innerText = folderName;
-  document.getElementById("folderSelect").append(folderDropdown);
-  document.getElementById("folderName").value = "";
-
-  const folderHeader = document.createElement("div");
-  folderHeader.id =
-    document.getElementById("folderSelect")[folders.length - 1].value;
-  folderHeader.innerHTML = folderName;
-  document.getElementById("folderHeader").append(folderHeader);
 });
 
 function folderReload() {
-  if (document.getElementById("folderSelect") === "") {
-    document.getElementById("folderselect").value === "";
-  }
+  const folders = JSON.parse(localStorage.getItem("folders"));
   for (let i = 0; i < folders.length; i++) {
     const folderDropdown = document.createElement("option");
     folderDropdown.setAttribute("value", i);
-    folderDropdown.innerText = folders[i];
-
-    document.getElementById("folderSelect").append(folderDropdown);
+    folderDropdown.textContent = folders[i];
+    if (!localStorage.getItem("folders")) {
+      document.getElementById("folderSelect").value = "";
+    }
+    document.getElementById("folderSelect").appendChild(folderDropdown);
 
     const folderHeader = document.createElement("div");
     folderHeader.id = document.getElementById("folderSelect")[i].value;
     folderHeader.innerHTML = folders[i];
-    document.getElementById("folderHeader").append(folderHeader);
+    document.getElementById("folderHeader").appendChild(folderHeader);
   }
 }
 
 document.getElementById("linkSaveBtn").addEventListener("click", () => {
-  if (!localStorage.getItem("bookmarks")) {
+  const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  if (!bookmarks) {
     localStorage.setItem("bookmarks", `[]`);
+    // New link Name as object
+    const newLink = {
+      folder: `${document.getElementById("folderSelect").value}`,
+      name: `${document.getElementById("bookmarkLinkName").value}`,
+      bookmarkUrl: `${document.getElementById("bookmarkLinkUrl").value}`,
+      siteIcon: `https://www.google.com/s2/favicons?domain=${
+        document.getElementById("bookmarkLinkUrl").value
+      }&sz=128`,
+    };
+    //folders Array that is made at start
+    var oldFolder = JSON.parse(localStorage.getItem("bookmarks"));
+    // push new Folder Name object into old Array
+    oldFolder.push(newLink);
+    // reload the the new and old array to local storage again
+    localStorage.setItem("bookmarks", JSON.stringify(oldFolder));
+    document.getElementById("bookmarkLinkName").value = "";
+    document.getElementById("bookmarkLinkUrl").value = "";
+    linkReload();
+  } else {
+    // New link Name as object
+    const newLink = {
+      folder: `${document.getElementById("folderSelect").value}`,
+      name: `${document.getElementById("bookmarkLinkName").value}`,
+      bookmarkUrl: `${document.getElementById("bookmarkLinkUrl").value}`,
+      siteIcon: `https://www.google.com/s2/favicons?domain=${
+        document.getElementById("bookmarkLinkUrl").value
+      }&sz=128`,
+    };
+    //folders Array that is made at start
+    var oldFolder = JSON.parse(localStorage.getItem("bookmarks"));
+    // push new Folder Name object into old Array
+    oldFolder.push(newLink);
+    // reload the the new and old array to local storage again
+    localStorage.setItem("bookmarks", JSON.stringify(oldFolder));
+
+    const linkDropdown = document.createElement("option");
+    linkDropdown.setAttribute("value", bookmarks.length + 1);
+    linkDropdown.innerText = newLink.name;
+    document.getElementById("linkSelect").append(linkDropdown);
+
+    const linkImg = document.createElement("img");
+    linkImg.id = "linkImg";
+    linkImg.src = newLink.siteIcon;
+
+    const linkDiv = document.createElement("div");
+    linkDiv.id = "link";
+    linkDiv.innerText = newLink.name;
+    linkDiv.append(linkImg);
+
+    const linkA = document.createElement("a");
+    linkA.id = newLink.name;
+    linkA.href = newLink.bookmarkUrl;
+    linkA.append(linkDiv);
+
+    document.getElementById(newLink.folder).append(linkA);
+    document.getElementById("bookmarkLinkName").value = "";
+    document.getElementById("bookmarkLinkUrl").value = "";
   }
-  // New link Name as object
-  const newLink = {
-    folder: `${document.getElementById("folderSelect").value}`,
-    name: `${document.getElementById("bookmarkLinkName").value}`,
-    bookmarkUrl: `${document.getElementById("bookmarkLinkUrl").value}`,
-    siteIcon: `https://www.google.com/s2/favicons?domain=${
-      document.getElementById("bookmarkLinkUrl").value
-    }&sz=128`,
-  };
-  //folders Array that is made at start
-  var oldFolder = JSON.parse(localStorage.getItem("bookmarks"));
-  // push new Folder Name object into old Array
-  oldFolder.push(newLink);
-  // reload the the new and old array to local storage again
-  localStorage.setItem("bookmarks", JSON.stringify(oldFolder));
-
-  const linkDropdown = document.createElement("option");
-  linkDropdown.setAttribute("value", bookmarks.length + 1);
-  linkDropdown.innerText = newLink.name;
-  document.getElementById("linkSelect").append(linkDropdown);
-
-  const linkImg = document.createElement("img");
-  linkImg.id = "linkImg";
-  linkImg.src = newLink.siteIcon;
-
-  const linkDiv = document.createElement("div");
-  linkDiv.id = "link";
-  linkDiv.innerText = newLink.name;
-  linkDiv.append(linkImg);
-
-  const linkA = document.createElement("a");
-  linkA.id = "linkA";
-  linkA.href = newLink.bookmarkUrl;
-  linkA.append(linkDiv);
-
-  document.getElementById(newLink.folder).append(linkA);
-
-  document.getElementById("bookmarkLinkName").value = "";
-  document.getElementById("bookmarkLinkUrl").value = "";
 });
 
-const linkReload = () => {
-  if (document.getElementById("linkSelect") === "") {
-    document.getElementById("linkselect").value === "";
-  }
+function linkReload() {
+  const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   for (let i = 0; i < bookmarks.length; i++) {
     const linkDropdown = document.createElement("option");
     linkDropdown.setAttribute("value", i);
@@ -621,10 +676,10 @@ const linkReload = () => {
     linkDiv.append(linkImg);
 
     const linkA = document.createElement("a");
-    linkA.id = "linkA";
+    linkA.id = bookmarks[i].name;
     linkA.href = bookmarks[i].bookmarkUrl;
     linkA.append(linkDiv);
 
     document.getElementById(bookmarks[i].folder).append(linkA);
   }
-};
+}
