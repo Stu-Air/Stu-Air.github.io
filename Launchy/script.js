@@ -211,6 +211,8 @@ function defaultLayout() {
   localStorage.setItem("showWeather", "");
   localStorage.setItem("showGitStats", "");
   localStorage.setItem("showBookmarks", "");
+  localStorage.setItem("folders", `[]`);
+  localStorage.setItem("bookmarks", `[]`);
   start();
 }
 
@@ -540,7 +542,6 @@ function getWeather() {
 document.getElementById("folderSaveBtn").addEventListener("click", () => {
   const folders = JSON.parse(localStorage.getItem("folders"));
   if (!folders) {
-    localStorage.setItem("folders", `[]`);
     //new Folder Name
     let folderName = document.getElementById("folderName").value;
     //folders Array that is made at start
@@ -593,7 +594,6 @@ function folderReload() {
 document.getElementById("linkSaveBtn").addEventListener("click", () => {
   const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   if (!bookmarks) {
-    localStorage.setItem("bookmarks", `[]`);
     // New link Name as object
     const newLink = {
       folder: `${document.getElementById("folderSelect").value}`,
