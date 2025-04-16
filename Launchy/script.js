@@ -212,7 +212,6 @@ function defaultLayout() {
   localStorage.setItem("showGitStats", "");
   localStorage.setItem("showBookmarks", "");
   localStorage.setItem("folders", `[]`);
-  localStorage.setItem("bookmarks", `[]`);
   start();
 }
 
@@ -311,12 +310,20 @@ document.getElementById("removeFolder").addEventListener("click", () => {
   b = bookmarks.filter(
     (e) => e.folder === document.getElementById("folderSelect").value
   );
-  b.forEach((f) =>
+  b.forEach((f) => {
     bookmarks.splice(
       bookmarks.findIndex((e) => e.folder === f.folder),
       1
-    )
-  );
+    );
+    document
+      .getElementById("linkSelect")
+      .removeChild(bookmarks.findIndex((e) => e.folder === f.folder));
+    document
+      .getElementById("folderSelect")
+      .removeChild(
+        document.getElementById(document.getElementById("folderSelect").value)
+      );
+  });
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   document
     .getElementById("folderHeader")
@@ -324,9 +331,9 @@ document.getElementById("removeFolder").addEventListener("click", () => {
       document.getElementById(document.getElementById("folderSelect").value)
     );
 
-  // document.getElementById("folderSelect").value = "";
-  //  folderReload();
-  //  linkReload();
+  document.getElementById("folderSelect").value = "";
+  folderReload();
+  linkReload();
 });
 
 document.getElementById("removeLink").addEventListener("click", () => {
@@ -541,36 +548,23 @@ function getWeather() {
 
 document.getElementById("folderSaveBtn").addEventListener("click", () => {
   const folders = JSON.parse(localStorage.getItem("folders"));
-  if (!folders) {
-    //new Folder Name
-    let folderName = document.getElementById("folderName").value;
-    //folders Array that is made at start
-    var oldFolder = folders;
-    // push new Folder Name into old Array
-    oldFolder.push(folderName);
-    // reload the the new and old array to local storage again
-    localStorage.setItem("folders", JSON.stringify(oldFolder));
-    document.getElementById("folderName").value = "";
-    folderReload();
-  } else {
-    //new Folder Name
-    let folderName = document.getElementById("folderName").value;
-    //folders Array that is made at start
-    var oldFolder = folders;
-    // push new Folder Name into old Array
-    oldFolder.push(folderName);
-    // reload the the new and old array to local storage again
-    localStorage.setItem("folders", JSON.stringify(oldFolder));
-    const folderDropdown = document.createElement("option");
-    folderDropdown.setAttribute("value", folders.length + 1);
-    folderDropdown.innerText = folderName;
-    document.getElementById("folderSelect").append(folderDropdown);
-    const folderHeader = document.createElement("div");
-    folderHeader.id = folders.length;
-    folderHeader.innerHTML = folderName;
-    document.getElementById("folderHeader").append(folderHeader);
-    document.getElementById("folderName").value = "";
-  }
+  //new Folder Name
+  let folderName = document.getElementById("folderName").value;
+  //folders Array that is made at start
+  var oldFolder = folders;
+  // push new Folder Name into old Array
+  oldFolder.push(folderName);
+  // reload the the new and old array to local storage again
+  localStorage.setItem("folders", JSON.stringify(oldFolder));
+  const folderDropdown = document.createElement("option");
+  folderDropdown.setAttribute("value", folders.length - 1);
+  folderDropdown.innerText = folderName;
+  document.getElementById("folderSelect").append(folderDropdown);
+  const folderHeader = document.createElement("div");
+  folderHeader.id = folders.length - 1;
+  folderHeader.innerHTML = folderName;
+  document.getElementById("folderHeader").append(folderHeader);
+  document.getElementById("folderName").value = "";
 });
 
 function folderReload() {
@@ -583,7 +577,6 @@ function folderReload() {
       document.getElementById("folderSelect").value = "";
     }
     document.getElementById("folderSelect").appendChild(folderDropdown);
-
     const folderHeader = document.createElement("div");
     folderHeader.id = document.getElementById("folderSelect")[i].value;
     folderHeader.innerHTML = folders[i];
@@ -594,6 +587,7 @@ function folderReload() {
 document.getElementById("linkSaveBtn").addEventListener("click", () => {
   const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   if (!bookmarks) {
+    localStorage.setItem("bookmarks", `[]`);
     // New link Name as object
     const newLink = {
       folder: `${document.getElementById("folderSelect").value}`,
@@ -630,7 +624,7 @@ document.getElementById("linkSaveBtn").addEventListener("click", () => {
     localStorage.setItem("bookmarks", JSON.stringify(oldFolder));
 
     const linkDropdown = document.createElement("option");
-    linkDropdown.setAttribute("value", bookmarks.length + 1);
+    linkDropdown.setAttribute("value", bookmarks.length);
     linkDropdown.innerText = newLink.name;
     document.getElementById("linkSelect").append(linkDropdown);
 
